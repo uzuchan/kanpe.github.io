@@ -272,9 +272,9 @@
     <div class="divider"></div>
 
     <div class="grp">
-      <button class="btn" id="timerBtn">⏱ タイマー</button>
+      <button class="btn" id="timerBtn">タイマー</button>
       <button class="btn" id="mirrorBtn">反転</button>
-      <button class="btn" id="libBtn">📄 原稿</button>
+      <button class="btn" id="libBtn">原稿</button>
       <button class="btn" id="editBtn">編集</button>
       <button class="btn" id="fsBtn">全画面</button>
       <button class="btn" id="helpBtn" aria-label="ショートカット">?</button>
@@ -482,8 +482,8 @@
     speedVal.textContent = m>0 ? ('全体 ≈ '+fmtTime(m/pxPerSec())) : '—';
   }
   function updateTimerBtn(){
-    if(targetSec){ timerBtn.textContent='⏱ '+fmtTime(targetSec); timerBtn.classList.add('active'); }
-    else { timerBtn.textContent='⏱ タイマー'; timerBtn.classList.remove('active'); }
+    if(targetSec){ timerBtn.textContent=fmtTime(targetSec); timerBtn.classList.add('active'); }
+    else { timerBtn.textContent='タイマー'; timerBtn.classList.remove('active'); }
   }
   function updateTimeReadouts(){
     var m=getMax();
@@ -494,10 +494,10 @@
   function updateTimerInfo(){
     if(!targetSec){ timerInfo.textContent='いまは手動（スライダー）で速度を決めています．'; return; }
     var m=getMax();
-    if(m<=0){ timerInfo.textContent='全体 ⏱ '+fmtTime(targetSec)+'．いまはスクロール不要な長さです．文字を大きくすると有効になります．'; return; }
+    if(m<=0){ timerInfo.textContent='全体 '+fmtTime(targetSec)+'．いまはスクロール不要な長さです．文字を大きくすると有効になります．'; return; }
     var pps=pxPerSec();
     var note = pps>180?'（かなり速め）':(pps<8?'（かなりゆっくり）':'');
-    timerInfo.textContent='全体 ⏱ '+fmtTime(targetSec)+' ／ 速度 ≈ '+Math.round(pps)+' px/s '+note;
+    timerInfo.textContent='全体 '+fmtTime(targetSec)+' ／ 速度 ≈ '+Math.round(pps)+' px/s '+note;
   }
   function refreshSpeedUI(){
     syncSliderToSpeed(); updateSpeedLabel(); updateTimerBtn(); updateTimerInfo(); updateTimeReadouts();
